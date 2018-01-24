@@ -1,5 +1,6 @@
 # IOTCoffeeMaker1
 Short ESP8266 arduino code to make a coffee maker turn on/off over WiFi.
+The model I used is a Mr. Coffee DRX5.
 
 The coffee maker will also POST to a URL whenever an action is performed.
 
