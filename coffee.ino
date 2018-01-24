@@ -1,3 +1,6 @@
+//IOTCoffeeMaker1
+//Author: Nigel Ticknor
+
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
@@ -10,8 +13,8 @@ const String deviceID = "uniqueIDToYourNetwork";
 const String deviceSecret = "secretCodeHere";
 
 //Where to update
-const String urlIPUpdate = "https://www.example.com/iot/update_ip";
-const String urlNotify = "https://www.example.com/iot/notify";
+const String urlIPUpdate = "https://www.example.com/iot/update_ip"; //This is where it will disclose its IP address; it will also print over serial
+const String urlNotify = "https://www.example.com/iot/notify"; //this is where it will notify that it has been operated
 
 //constants for gpio
 int LED_OFF = HIGH;
@@ -152,11 +155,9 @@ void loop() {
     client.println("<!DOCTYPE HTML>");
     client.println("<html style='height:100%;'>");
     client.println("<title>Coffee Maker</title>");
-    client.println("<body style='height:98%;'>");
+    client.println("<body style='margin:0;padding:0;'>");
     client.println("<form method=\"POST\" style='height:100%;'>");
-    client.println("<input type='hidden' id='secret' name='secret' value='szechuan'/>");
-   // client.println("<input type='text' id='action' name='action'/>");
-   // client.println("<input type='submit'/>");
+    client.println("<input type='hidden' id='secret' name='secret' value='"+deviceSecret+"'/>"); //This isn't very secure, so you can make it an unpopulated text field or something else
     client.println("<button type='submit' name='action' value='on' style='width:100%;height:50%;font-size:500%;'>Coffee On</button>");
     client.println("<button type='submit' name='action' value='off' style='width:100%;height:50%;font-size:500%;'>Coffee Off</button>");
     client.println("</form>");
